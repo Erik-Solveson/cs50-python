@@ -10,7 +10,7 @@ def main():
         for line in lines:
             if line.lstrip().startswith('#'):
                 continue
-            elif line == " ":
+            elif line.isspace():
                 continue
             else:
                 i += 1
