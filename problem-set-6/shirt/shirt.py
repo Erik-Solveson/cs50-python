@@ -1,4 +1,5 @@
 from PIL import Image
+from PIL import ImageOps
 import sys
 
 def main():
@@ -28,7 +29,10 @@ def overlay_image(file_1, file_2):
     try:
         with Image.open(file_1) as img1:
             with Image.open(file_2) as img2:
-                img1.paste(img2)
+                img1 = ImageOps.fit(img1, size=(600,650))
+                img2 = ImageOps.fit(img2, size=(600,650))
+
+                img1.paste(im=img2, mask=img2)
                 img1.save("newimage.png")
 
     except FileNotFoundError:
